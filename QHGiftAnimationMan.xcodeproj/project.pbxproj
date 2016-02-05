@@ -1,0 +1,331 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		740132771C64D9B9007C22D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740132761C64D9B9007C22D1 /* AppDelegate.swift */; };
+		740132791C64D9B9007C22D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740132781C64D9B9007C22D1 /* ViewController.swift */; };
+		7401327C1C64D9B9007C22D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7401327A1C64D9B9007C22D1 /* Main.storyboard */; };
+		7401327E1C64D9B9007C22D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7401327D1C64D9B9007C22D1 /* Assets.xcassets */; };
+		740132811C64D9B9007C22D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7401327F1C64D9B9007C22D1 /* LaunchScreen.storyboard */; };
+		7401328C1C64D9DA007C22D1 /* QHMatrisLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740132891C64D9DA007C22D1 /* QHMatrisLocation.swift */; };
+		7401328D1C64D9DA007C22D1 /* QHMatrisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7401328A1C64D9DA007C22D1 /* QHMatrisManager.swift */; };
+		7401328E1C64D9DA007C22D1 /* QHRandomLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7401328B1C64D9DA007C22D1 /* QHRandomLocation.swift */; };
+		740132931C64DA7F007C22D1 /* test in Resources */ = {isa = PBXBuildFile; fileRef = 740132901C64DA7F007C22D1 /* test */; };
+		740132941C64DA7F007C22D1 /* xiaolian in Resources */ = {isa = PBXBuildFile; fileRef = 740132911C64DA7F007C22D1 /* xiaolian */; };
+		740132951C64DA7F007C22D1 /* xiaolian2 in Resources */ = {isa = PBXBuildFile; fileRef = 740132921C64DA7F007C22D1 /* xiaolian2 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		740132731C64D9B9007C22D1 /* QHGiftAnimationMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QHGiftAnimationMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		740132761C64D9B9007C22D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		740132781C64D9B9007C22D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7401327B1C64D9B9007C22D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7401327D1C64D9B9007C22D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		740132801C64D9B9007C22D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		740132821C64D9B9007C22D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		740132891C64D9DA007C22D1 /* QHMatrisLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QHMatrisLocation.swift; sourceTree = "<group>"; };
+		7401328A1C64D9DA007C22D1 /* QHMatrisManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QHMatrisManager.swift; sourceTree = "<group>"; };
+		7401328B1C64D9DA007C22D1 /* QHRandomLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QHRandomLocation.swift; sourceTree = "<group>"; };
+		740132901C64DA7F007C22D1 /* test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test; sourceTree = "<group>"; };
+		740132911C64DA7F007C22D1 /* xiaolian */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xiaolian; sourceTree = "<group>"; };
+		740132921C64DA7F007C22D1 /* xiaolian2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xiaolian2; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		740132701C64D9B9007C22D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7401326A1C64D9B9007C22D1 = {
+			isa = PBXGroup;
+			children = (
+				740132751C64D9B9007C22D1 /* QHGiftAnimationMan */,
+				740132741C64D9B9007C22D1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		740132741C64D9B9007C22D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				740132731C64D9B9007C22D1 /* QHGiftAnimationMan.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		740132751C64D9B9007C22D1 /* QHGiftAnimationMan */ = {
+			isa = PBXGroup;
+			children = (
+				740132881C64D9DA007C22D1 /* QHGiftAnimationMan */,
+				740132761C64D9B9007C22D1 /* AppDelegate.swift */,
+				740132781C64D9B9007C22D1 /* ViewController.swift */,
+				7401327A1C64D9B9007C22D1 /* Main.storyboard */,
+				7401327D1C64D9B9007C22D1 /* Assets.xcassets */,
+				7401327F1C64D9B9007C22D1 /* LaunchScreen.storyboard */,
+				740132821C64D9B9007C22D1 /* Info.plist */,
+			);
+			path = QHGiftAnimationMan;
+			sourceTree = "<group>";
+		};
+		740132881C64D9DA007C22D1 /* QHGiftAnimationMan */ = {
+			isa = PBXGroup;
+			children = (
+				7401328F1C64DA7F007C22D1 /* GiftFiles */,
+				740132891C64D9DA007C22D1 /* QHMatrisLocation.swift */,
+				7401328A1C64D9DA007C22D1 /* QHMatrisManager.swift */,
+				7401328B1C64D9DA007C22D1 /* QHRandomLocation.swift */,
+			);
+			path = QHGiftAnimationMan;
+			sourceTree = "<group>";
+		};
+		7401328F1C64DA7F007C22D1 /* GiftFiles */ = {
+			isa = PBXGroup;
+			children = (
+				740132901C64DA7F007C22D1 /* test */,
+				740132911C64DA7F007C22D1 /* xiaolian */,
+				740132921C64DA7F007C22D1 /* xiaolian2 */,
+			);
+			path = GiftFiles;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		740132721C64D9B9007C22D1 /* QHGiftAnimationMan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 740132851C64D9B9007C22D1 /* Build configuration list for PBXNativeTarget "QHGiftAnimationMan" */;
+			buildPhases = (
+				7401326F1C64D9B9007C22D1 /* Sources */,
+				740132701C64D9B9007C22D1 /* Frameworks */,
+				740132711C64D9B9007C22D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QHGiftAnimationMan;
+			productName = QHGiftAnimationMan;
+			productReference = 740132731C64D9B9007C22D1 /* QHGiftAnimationMan.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7401326B1C64D9B9007C22D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = chen;
+				TargetAttributes = {
+					740132721C64D9B9007C22D1 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 7401326E1C64D9B9007C22D1 /* Build configuration list for PBXProject "QHGiftAnimationMan" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7401326A1C64D9B9007C22D1;
+			productRefGroup = 740132741C64D9B9007C22D1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				740132721C64D9B9007C22D1 /* QHGiftAnimationMan */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		740132711C64D9B9007C22D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				740132931C64DA7F007C22D1 /* test in Resources */,
+				740132811C64D9B9007C22D1 /* LaunchScreen.storyboard in Resources */,
+				740132951C64DA7F007C22D1 /* xiaolian2 in Resources */,
+				7401327E1C64D9B9007C22D1 /* Assets.xcassets in Resources */,
+				7401327C1C64D9B9007C22D1 /* Main.storyboard in Resources */,
+				740132941C64DA7F007C22D1 /* xiaolian in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7401326F1C64D9B9007C22D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7401328D1C64D9DA007C22D1 /* QHMatrisManager.swift in Sources */,
+				7401328E1C64D9DA007C22D1 /* QHRandomLocation.swift in Sources */,
+				740132791C64D9B9007C22D1 /* ViewController.swift in Sources */,
+				7401328C1C64D9DA007C22D1 /* QHMatrisLocation.swift in Sources */,
+				740132771C64D9B9007C22D1 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7401327A1C64D9B9007C22D1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7401327B1C64D9B9007C22D1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7401327F1C64D9B9007C22D1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				740132801C64D9B9007C22D1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		740132831C64D9B9007C22D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		740132841C64D9B9007C22D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		740132861C64D9B9007C22D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = QHGiftAnimationMan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chen.QHGiftAnimationMan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		740132871C64D9B9007C22D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = QHGiftAnimationMan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chen.QHGiftAnimationMan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7401326E1C64D9B9007C22D1 /* Build configuration list for PBXProject "QHGiftAnimationMan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				740132831C64D9B9007C22D1 /* Debug */,
+				740132841C64D9B9007C22D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		740132851C64D9B9007C22D1 /* Build configuration list for PBXNativeTarget "QHGiftAnimationMan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				740132861C64D9B9007C22D1 /* Debug */,
+				740132871C64D9B9007C22D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7401326B1C64D9B9007C22D1 /* Project object */;
+}

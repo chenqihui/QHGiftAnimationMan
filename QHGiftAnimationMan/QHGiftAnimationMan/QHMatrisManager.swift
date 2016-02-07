@@ -10,50 +10,70 @@ import UIKit
 
 class QHMatrisManager: NSObject {
     
-    private weak var superV: UIView?
-    private var count: Int = 1
+    private weak var superV: UIView!
     private var bAnimation: Bool = false
+    private var subV: UIView!
+    private var matrisTag: Int = 200
+    var currentMatrisArray = [AnyObject]()
 
 //    private let matrisQueue = dispatch_queue_create("com.chen.matris", DISPATCH_QUEUE_CONCURRENT)
     private var matrisRandomListArray = [Array<AnyObject>]()
     
     deinit {
+        currentMatrisArray.removeAll()
         matrisRandomListArray.removeAll()
     }
     
-    init(superView: UIView) {
+    init(superView: UIView, subView: UIView?) {
         superV = superView
+        if let sV = subView {
+            subV = sV
+        }
+        else {
+            subV = UIImageView.init(frame: CGRectZero)
+            subV.backgroundColor = UIColor.redColor()
+        }
     }
     
-    func addMatrisRandom(name: String, regionRect: CGRect) {
+    func addMatrisAnimation(name: String, regionRect: CGRect, image: UIImage?) {
 //        dispatch_sync(matrisQueue) { () -> Void in
-            self.matrisRandomListArray.append([name, NSValue.init(CGRect: regionRect)])
-            if self.bAnimation == false {
-                self.bAnimation = true
-                self.createMatrisRandom(name, regionRect: regionRect)
-            }
+        ++matrisTag
+        if bAnimation == false {
+            bAnimation = true
+            currentMatrisArray = [name, NSValue.init(CGRect: regionRect), matrisTag]
+            self.createMatrisRandom()
+        }
+        else {
+            matrisRandomListArray.append([name, NSValue.init(CGRect: regionRect), matrisTag])
+        }
 //        }
     }
     
-    func createMatrisRandom(name: String, regionRect: CGRect) {
+    func createMatrisRandom() {
+        let name = currentMatrisArray[0] as! String
+        let regionRect = (currentMatrisArray[1] as! NSValue).CGRectValue()
+        let matrisTag = currentMatrisArray[2] as! Int
+        
         let matrisLocation = QHMatrisLocation.init()
         let (matrisArray, size) = matrisLocation.readFile(name, width: regionRect.size.width, height: regionRect.size.height)
-        count = matrisArray.count
-        let matrisRandomArray = QHRandomLocation.getRandomLocationInRegion(count, width: superV!.frame.width, height: superV!.frame.height)
+        let matrisRandomArray = QHRandomLocation.getRandomLocationInRegion(matrisArray.count, width: superV.frame.width, height: superV.frame.height)
         
+        let fatherView: UIView = UIView.init(frame: subV.bounds)
+        fatherView.tag = matrisTag
+        fatherView.backgroundColor = UIColor.clearColor()
         for (index, value) in matrisArray.enumerate() {
             let point = value.CGPointValue()
-            let pView = UIView.init(frame: CGRectMake(point.x + regionRect.origin.x, point.y + regionRect.origin.y, size.width, size.height))
-            pView.backgroundColor = UIColor.redColor()
-            pView.layer.cornerRadius = pView.frame.width/2
-            pView.tag = index + 1;
-            superV!.addSubview(pView)
+            let pView = QHUtilsMan.duplicateView(subV)
+            pView.frame = CGRectMake(point.x + regionRect.origin.x, point.y + regionRect.origin.y, size.width, size.height)
+            pView.tag = index + 1
+            fatherView.addSubview(pView)
         }
+        superV.addSubview(fatherView)
         
-        self.animationMatrisRandom(superV!, matrisRandomArray: matrisRandomArray)
+        self.animationMatrisRandom(fatherView, matrisRandomArray)
     }
     
-    func animationMatrisRandom(superView: UIView, matrisRandomArray: Array<NSValue>) {
+    func animationMatrisRandom(superView: UIView, _ matrisRandomArray: Array<NSValue>) {
         for (index, value) in matrisRandomArray.enumerate() {
             if let pView = superView.viewWithTag(index + 1) {
                 let point = value.CGPointValue()
@@ -63,7 +83,7 @@ class QHMatrisManager: NSObject {
                 animation.duration = 1
                 animation.fillMode = kCAFillModeForwards
                 animation.removedOnCompletion = true
-                if (index == count - 1) {
+                if (index == matrisRandomArray.count - 1) {
                     animation.delegate = self
                 }
                 animation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -73,17 +93,15 @@ class QHMatrisManager: NSObject {
     }
     
     func cleanMatrisRandom() {
-        for index in 1...self.count {
-            if let pView: UIView = self.superV!.viewWithTag(index) {
-                pView.layer.removeAllAnimations()
-                pView.removeFromSuperview()
+        if let arrayTemp: Array<AnyObject> = currentMatrisArray {
+            if let fatherView: UIView = self.superV.viewWithTag(arrayTemp[2] as! Int) {
+                fatherView.removeFromSuperview()
             }
         }
-        self.matrisRandomListArray.removeFirst()
         if self.matrisRandomListArray.count > 0 {
-            if let arrayTemp: Array<AnyObject> = self.matrisRandomListArray.first {
-                self.createMatrisRandom(arrayTemp[0] as! String, regionRect: (arrayTemp[1] as! NSValue).CGRectValue())
-            }
+            currentMatrisArray = matrisRandomListArray.first!
+            matrisRandomListArray.removeFirst()
+            self.createMatrisRandom()
         }
         else {
             bAnimation = false

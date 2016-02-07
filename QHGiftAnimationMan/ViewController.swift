@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        matrisManager = QHMatrisManager.init(superView: contentView)
+        matrisManager = QHMatrisManager.init(superView: contentView, subView: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     
     @IBAction func showMatrisAction(sender: AnyObject) {
         let widthView: CGFloat = 200
-        matrisManager!.addMatrisRandom("xiaolian", regionRect: CGRectMake((contentView.frame.width - widthView)/2.0, (contentView.frame.height - widthView)/2.0, widthView, widthView))
+        matrisManager!.addMatrisAnimation("xiaolian", regionRect: CGRectMake((contentView.frame.width - widthView)/2.0, (contentView.frame.height - widthView)/2.0, widthView, widthView))
     }
     
 }

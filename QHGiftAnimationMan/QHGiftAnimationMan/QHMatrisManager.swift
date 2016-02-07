@@ -12,59 +12,74 @@ class QHMatrisManager: NSObject {
     
     private weak var superV: UIView!
     private var bAnimation: Bool = false
-    private var subV: UIView!
     private var matrisTag: Int = 200
-    var currentMatrisArray = [AnyObject]()
-
-//    private let matrisQueue = dispatch_queue_create("com.chen.matris", DISPATCH_QUEUE_CONCURRENT)
-    private var matrisRandomListArray = [Array<AnyObject>]()
+    private var cleanMatrisTag: Int = 200
+    private var matrisListArray = [Array<AnyObject>]()
+    private var currentMatrisArray = [AnyObject]()
+    
+    var bAsync = false
+    var delayInSeconds = 1.0
     
     deinit {
         currentMatrisArray.removeAll()
-        matrisRandomListArray.removeAll()
+        matrisListArray.removeAll()
     }
     
-    init(superView: UIView, subView: UIView?) {
+    init(superView: UIView) {
         superV = superView
-        if let sV = subView {
-            subV = sV
-        }
-        else {
-            subV = UIImageView.init(frame: CGRectZero)
-            subV.backgroundColor = UIColor.redColor()
-        }
     }
     
-    func addMatrisAnimation(name: String, regionRect: CGRect, image: UIImage?) {
-//        dispatch_sync(matrisQueue) { () -> Void in
+    func addMatrisAnimationRandomLocation(name: String, subView: UIView) {
+        
+        let x = QHRandomLocation.getRandomNumer(0, to: superV.frame.width)
+        let y = QHRandomLocation.getRandomNumer(0, to: superV.frame.height)
+        
+        self.addMatrisAnimation(name, centerPoint: CGPointMake(x, y), subView: subView)
+    }
+    
+    func addMatrisAnimation(name: String, centerPoint: CGPoint, subView: UIView) {
         ++matrisTag
-        if bAnimation == false {
-            bAnimation = true
-            currentMatrisArray = [name, NSValue.init(CGRect: regionRect), matrisTag]
-            self.createMatrisRandom()
+        if bAsync == true {
+            self.createMatrisRandom(name, centerPoint: centerPoint, matrisTag: matrisTag, subView: subView)
         }
         else {
-            matrisRandomListArray.append([name, NSValue.init(CGRect: regionRect), matrisTag])
+            if bAnimation == false {
+                bAnimation = true
+                currentMatrisArray = [name, NSValue.init(CGPoint: centerPoint), matrisTag, subView]
+                self.createMatrisRandom()
+            }
+            else {
+                matrisListArray.append([name, NSValue.init(CGPoint: centerPoint), matrisTag, subView])
+            }
         }
-//        }
     }
     
-    func createMatrisRandom() {
+    private func createMatrisRandom() {
+        
         let name = currentMatrisArray[0] as! String
-        let regionRect = (currentMatrisArray[1] as! NSValue).CGRectValue()
+        let centerPoint = (currentMatrisArray[1] as! NSValue).CGPointValue()
         let matrisTag = currentMatrisArray[2] as! Int
+        let subView = currentMatrisArray[3] as! UIView
+        
+        self.createMatrisRandom(name, centerPoint: centerPoint, matrisTag: matrisTag, subView: subView)
+    }
+    
+    private func createMatrisRandom(name: String, centerPoint: CGPoint, matrisTag: Int, subView: UIView) {
         
         let matrisLocation = QHMatrisLocation.init()
-        let (matrisArray, size) = matrisLocation.readFile(name, width: regionRect.size.width, height: regionRect.size.height)
+        let (matrisArray, size) = matrisLocation.readMatrisFile(name, width: subView.frame.width, height: subView.frame.height)
+        let x = centerPoint.x - size.width/2
+        let y = centerPoint.y - size.height/2
+        
         let matrisRandomArray = QHRandomLocation.getRandomLocationInRegion(matrisArray.count, width: superV.frame.width, height: superV.frame.height)
         
-        let fatherView: UIView = UIView.init(frame: subV.bounds)
+        let fatherView: UIView = UIView.init(frame: superV.bounds)
         fatherView.tag = matrisTag
         fatherView.backgroundColor = UIColor.clearColor()
         for (index, value) in matrisArray.enumerate() {
             let point = value.CGPointValue()
-            let pView = QHUtilsMan.duplicateView(subV)
-            pView.frame = CGRectMake(point.x + regionRect.origin.x, point.y + regionRect.origin.y, size.width, size.height)
+            let pView = QHUtilsMan.duplicateView(subView)
+            pView.frame = CGRectMake(point.x + x, point.y + y, pView.frame.width, pView.frame.height)
             pView.tag = index + 1
             fatherView.addSubview(pView)
         }
@@ -73,7 +88,7 @@ class QHMatrisManager: NSObject {
         self.animationMatrisRandom(fatherView, matrisRandomArray)
     }
     
-    func animationMatrisRandom(superView: UIView, _ matrisRandomArray: Array<NSValue>) {
+    private func animationMatrisRandom(superView: UIView, _ matrisRandomArray: Array<NSValue>) {
         for (index, value) in matrisRandomArray.enumerate() {
             if let pView = superView.viewWithTag(index + 1) {
                 let point = value.CGPointValue()
@@ -92,28 +107,37 @@ class QHMatrisManager: NSObject {
         }
     }
     
-    func cleanMatrisRandom() {
-        if let arrayTemp: Array<AnyObject> = currentMatrisArray {
-            if let fatherView: UIView = self.superV.viewWithTag(arrayTemp[2] as! Int) {
+    private func cleanMatrisRandom() {
+        if bAsync == true {
+            ++cleanMatrisTag
+            if let fatherView: UIView = self.superV.viewWithTag(cleanMatrisTag) {
                 fatherView.removeFromSuperview()
             }
         }
-        if self.matrisRandomListArray.count > 0 {
-            currentMatrisArray = matrisRandomListArray.first!
-            matrisRandomListArray.removeFirst()
-            self.createMatrisRandom()
-        }
         else {
-            bAnimation = false
+            if let arrayTemp: Array<AnyObject> = currentMatrisArray {
+                if let fatherView: UIView = self.superV.viewWithTag(arrayTemp[3] as! Int) {
+                    fatherView.removeFromSuperview()
+                }
+            }
+            if matrisListArray.count > 0 {
+                currentMatrisArray = matrisListArray.first!
+                matrisListArray.removeFirst()
+                self.createMatrisRandom()
+            }
+            else {
+                bAnimation = false
+        }
         }
     }
     
     override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        let delayInSeconds = 1.0
         let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC)))
         dispatch_after(popTime, dispatch_get_main_queue()) { () -> Void in
             self.cleanMatrisRandom()
         }
     }
+    
+    
 
 }

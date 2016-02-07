@@ -19,6 +19,7 @@
 		740132941C64DA7F007C22D1 /* xiaolian in Resources */ = {isa = PBXBuildFile; fileRef = 740132911C64DA7F007C22D1 /* xiaolian */; };
 		740132951C64DA7F007C22D1 /* xiaolian2 in Resources */ = {isa = PBXBuildFile; fileRef = 740132921C64DA7F007C22D1 /* xiaolian2 */; };
 		745A78E91C66FEEF0073D18F /* QHUtilsMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745A78E81C66FEEF0073D18F /* QHUtilsMan.swift */; };
+		745A78EC1C67B81B0073D18F /* diao in Resources */ = {isa = PBXBuildFile; fileRef = 745A78EB1C67B81B0073D18F /* diao */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		740132911C64DA7F007C22D1 /* xiaolian */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xiaolian; sourceTree = "<group>"; };
 		740132921C64DA7F007C22D1 /* xiaolian2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xiaolian2; sourceTree = "<group>"; };
 		745A78E81C66FEEF0073D18F /* QHUtilsMan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QHUtilsMan.swift; sourceTree = "<group>"; };
+		745A78EB1C67B81B0073D18F /* diao */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = diao; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				7401328F1C64DA7F007C22D1 /* GiftFiles */,
-				740132891C64D9DA007C22D1 /* QHMatrisLocation.swift */,
 				7401328A1C64D9DA007C22D1 /* QHMatrisManager.swift */,
+				740132891C64D9DA007C22D1 /* QHMatrisLocation.swift */,
 				7401328B1C64D9DA007C22D1 /* QHRandomLocation.swift */,
 				745A78E81C66FEEF0073D18F /* QHUtilsMan.swift */,
 			);
@@ -97,6 +99,7 @@
 				740132901C64DA7F007C22D1 /* test */,
 				740132911C64DA7F007C22D1 /* xiaolian */,
 				740132921C64DA7F007C22D1 /* xiaolian2 */,
+				745A78EB1C67B81B0073D18F /* diao */,
 			);
 			path = GiftFiles;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				740132931C64DA7F007C22D1 /* test in Resources */,
+				745A78EC1C67B81B0073D18F /* diao in Resources */,
 				740132811C64D9B9007C22D1 /* LaunchScreen.storyboard in Resources */,
 				740132951C64DA7F007C22D1 /* xiaolian2 in Resources */,
 				7401327E1C64D9B9007C22D1 /* Assets.xcassets in Resources */,

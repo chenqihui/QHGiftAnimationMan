@@ -17,7 +17,9 @@ class QHMatrisManager: NSObject {
     private var matrisListArray = [Array<AnyObject>]()
     private var currentMatrisArray = [AnyObject]()
     
+    /**是否异步显示，即是否不排队*/
     var bAsync = false
+    /**拼成之后的停留时间*/
     var delayInSeconds = 1.0
     
     deinit {
@@ -29,6 +31,12 @@ class QHMatrisManager: NSObject {
         superV = superView
     }
     
+    /**
+     随机位置显示
+     
+     - parameter name:    矩阵名称
+     - parameter subView: 每个矩阵点的样式
+     */
     func addMatrisAnimationRandomLocation(name: String, subView: UIView) {
         
         let x = QHRandomLocation.getRandomNumer(0, to: superV.frame.width)
@@ -37,10 +45,17 @@ class QHMatrisManager: NSObject {
         self.addMatrisAnimation(name, centerPoint: CGPointMake(x, y), subView: subView)
     }
     
+    /**
+     指定矩阵的中心位置
+     
+     - parameter name:        矩阵名称
+     - parameter centerPoint: 中心点
+     - parameter subView:     每个矩阵点的样式
+     */
     func addMatrisAnimation(name: String, centerPoint: CGPoint, subView: UIView) {
         ++matrisTag
         if bAsync == true {
-            self.createMatrisRandom(name, centerPoint: centerPoint, matrisTag: matrisTag, subView: subView)
+            self.createMatrisRandom(name, centerPoint, matrisTag, subView)
         }
         else {
             if bAnimation == false {
@@ -61,10 +76,10 @@ class QHMatrisManager: NSObject {
         let matrisTag = currentMatrisArray[2] as! Int
         let subView = currentMatrisArray[3] as! UIView
         
-        self.createMatrisRandom(name, centerPoint: centerPoint, matrisTag: matrisTag, subView: subView)
+        self.createMatrisRandom(name, centerPoint, matrisTag, subView)
     }
     
-    private func createMatrisRandom(name: String, centerPoint: CGPoint, matrisTag: Int, subView: UIView) {
+    private func createMatrisRandom(name: String, _ centerPoint: CGPoint, _ matrisTag: Int, _ subView: UIView) {
         
         let matrisLocation = QHMatrisLocation.init()
         let (matrisArray, size) = matrisLocation.readMatrisFile(name, width: subView.frame.width, height: subView.frame.height)
@@ -116,7 +131,7 @@ class QHMatrisManager: NSObject {
         }
         else {
             if let arrayTemp: Array<AnyObject> = currentMatrisArray {
-                if let fatherView: UIView = self.superV.viewWithTag(arrayTemp[3] as! Int) {
+                if let fatherView: UIView = self.superV.viewWithTag(arrayTemp[2] as! Int) {
                     fatherView.removeFromSuperview()
                 }
             }

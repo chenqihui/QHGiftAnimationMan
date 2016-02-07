@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         let subImageView = UIImageView.init(frame: CGRectMake(0, 0, widthView, widthView))
         subImageView.image = image
         
-//        matrisManager!.addMatrisAnimation("xiaolian", centerPoint: contentView.center, subView: subImageView)
+//        matrisManager!.addMatrisAnimation("xiaolian2", centerPoint: contentView.center, subView: subImageView)
         
         matrisManager!.addMatrisAnimationRandomLocation(QHRandomLocation.getRandomNumer(0, to: 1) == 0 ? "xiaolian" : "diao", subView: subImageView)
     }

@@ -17,10 +17,14 @@ class QHMatrisManager: NSObject {
     private var matrisListArray = [Array<AnyObject>]()
     private var currentMatrisArray = [AnyObject]()
     
-    /**是否异步显示，即是否不排队*/
+    /// 是否异步显示，即是否不排队
     var bAsync = false
-    /**拼成之后的停留时间*/
+    /// 拼成之后的停留时间，为小于等于0时，表示不删除动画
     var delayInSeconds = 1.0
+    /// 左边间隙
+    var wSpace: CGFloat = 0.0
+    /// 上边间隙
+    var hSpace: CGFloat = 0.0
     
     deinit {
         currentMatrisArray.removeAll()
@@ -82,7 +86,7 @@ class QHMatrisManager: NSObject {
     private func createMatrisRandom(name: String, _ centerPoint: CGPoint, _ matrisTag: Int, _ subView: UIView) {
         
         let matrisLocation = QHMatrisLocation.init()
-        let (matrisArray, size) = matrisLocation.readMatrisFile(name, width: subView.frame.width, height: subView.frame.height)
+        let (matrisArray, size) = matrisLocation.readMatrisFile(name, width: subView.frame.width, height: subView.frame.height, wSpace: wSpace, hSpace: hSpace)
         let x = centerPoint.x - size.width/2
         let y = centerPoint.y - size.height/2
         
@@ -113,7 +117,7 @@ class QHMatrisManager: NSObject {
                 animation.duration = 1
                 animation.fillMode = kCAFillModeForwards
                 animation.removedOnCompletion = true
-                if (index == matrisRandomArray.count - 1) {
+                if (index == matrisRandomArray.count - 1 && delayInSeconds > 0) {
                     animation.delegate = self
                 }
                 animation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseInEaseOut)

@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var matrisManager: QHMatrisManager?
+    var matrisManager: QHMatrisManager!
     
     @IBOutlet weak var contentView: UIView!
     
@@ -18,8 +18,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         matrisManager = QHMatrisManager.init(superView: contentView)
-        matrisManager?.bAsync = true
-        matrisManager?.delayInSeconds = 6
+        matrisManager.bAsync = true
+        matrisManager.delayInSeconds = 6
+        matrisManager.wSpace = -10
+        matrisManager.hSpace = -10
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,7 +30,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showMatrisAction(sender: AnyObject) {
-        let widthView: CGFloat = QHRandomLocation.getRandomNumer(12, to: 22)
+        let widthView: CGFloat = 30//QHRandomLocation.getRandomNumer(12, to: 22)
         let subView: UIView = UIView.init(frame: CGRectMake(0, 0, widthView, widthView))
         subView.backgroundColor = UIColor.orangeColor()
         subView.layer.cornerRadius = widthView/2

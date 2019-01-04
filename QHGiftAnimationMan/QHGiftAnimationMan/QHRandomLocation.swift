@@ -40,9 +40,9 @@ class QHRandomLocation: NSObject {
             }
             
             for _ in 1...(index == region ? sum + yu : sum) {
-                let x = getRandomNumer(CGFloat(wRange.location), to: CGFloat(wRange.location + wRange.length))
-                let y = getRandomNumer(CGFloat(hRange.location), to: CGFloat(hRange.location + hRange.length))
-                randomArray.append(NSValue.init(CGPoint: CGPointMake(x, y)))
+                let x = getRandomNumer(from: CGFloat(wRange.location), to: CGFloat(wRange.location + wRange.length))
+                let y = getRandomNumer(from: CGFloat(hRange.location), to: CGFloat(hRange.location + hRange.length))
+                randomArray.append(NSValue(cgPoint: CGPoint(x: x, y: y)))
             }
         }
         
@@ -54,15 +54,15 @@ class QHRandomLocation: NSObject {
         var randomArray = [NSValue]()
         
         for _ in 1...count {
-            let x = getRandomNumer(0, to: UIScreen.mainScreen().bounds.width)
-            let y = getRandomNumer(0, to: UIScreen.mainScreen().bounds.height)
-            randomArray.append(NSValue.init(CGPoint: CGPointMake(x, y)))
+            let x = getRandomNumer(from: 0, to: UIScreen.main.bounds.width)
+            let y = getRandomNumer(from: 0, to: UIScreen.main.bounds.height)
+            randomArray.append(NSValue(cgPoint: CGPoint(x: x, y: y)))
         }
         
         return randomArray
     }
     
     class func getRandomNumer(from: CGFloat, to: CGFloat) -> CGFloat {
-        return from + CGFloat(arc4random())%(to - from + 1.0)
+        return from + CGFloat(arc4random()).truncatingRemainder(dividingBy: (to - from + 1.0))
     }
 }

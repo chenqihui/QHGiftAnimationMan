@@ -13,25 +13,28 @@ class QHMatrisLocation: NSObject {
     let matrisValue = "1"
     
     func readMartisFile(name: String, width: CGFloat) -> (Array<NSValue>, CGSize) {
-        return self.readMatrisFile(name, width: width, height: width, wSpace: 0, hSpace: 0)
+        return self.readMatrisFile(name: name, width: width, height: width, wSpace: 0, hSpace: 0)
     }
     
     func readMatrisFile(name: String, width: CGFloat, height: CGFloat, wSpace: CGFloat, hSpace: CGFloat) -> (Array<NSValue>, CGSize) {
         
         var matrixArray = [NSValue]()
-        var matrixTempArray = [AnyObject]()
+        var matrixTempArray = [Any]()
 
-        let filePath = NSBundle.mainBundle().pathForResource(name, ofType: nil)
-        let contentString = try! String.init(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding)
+        let filePath = Bundle.main.path(forResource: name, ofType: nil)
+        let contentString = try! String.init(contentsOfFile: filePath!, encoding: String.Encoding.utf8)
         
         var length: CGFloat = 0
         
-        contentString.enumerateLines({ (line, stop) -> () in
-            var matrixLineArray = [AnyObject]()
-            let range: Range<String.Index> = Range<String.Index>(start: line.startIndex, end: line.endIndex)
-            line.enumerateSubstringsInRange(range, options: NSStringEnumerationOptions.ByComposedCharacterSequences, { (substring, substringRange, enclosingRange, stop) -> () in
-                matrixLineArray.append(substring!)
-            })
+        contentString.enumerateLines(invoking: { (line, stop) -> () in
+            var matrixLineArray = [Any]()
+            let wholeString = line.startIndex..<line.endIndex
+            line.enumerateSubstrings(in: wholeString, options: .byComposedCharacterSequences) {
+                (substring, range, enclosingRange, stopPointer) in
+                if let s = substring {
+                    matrixLineArray.append(s)
+                }
+            }
             if (length == 0) {
                 length = CGFloat((line as NSString).length)
             }
@@ -43,11 +46,11 @@ class QHMatrisLocation: NSObject {
         var x: CGFloat = 0// CGFloat(w/2)
         var y: CGFloat = 0// CGFloat(h/2)
         
-        for (index, value) in matrixTempArray.enumerate() {
+        for (index, value) in matrixTempArray.enumerated() {
             let array = value as! Array<String>
-            for (_, val) in array.enumerate() {
+            for (_, val) in array.enumerated() {
                 if (val == matrisValue) {
-                    matrixArray.append(NSValue.init(CGPoint: CGPointMake(x, y)))
+                    matrixArray.append(NSValue(cgPoint: CGPoint(x: x, y: y)))
                 }
                 x += w + wSpace
             }
@@ -57,7 +60,7 @@ class QHMatrisLocation: NSObject {
             y += h + hSpace
         }
         
-        return (matrixArray, CGSizeMake(x, y))
+        return (matrixArray, CGSize(width: x, height: y))
     }
 
 }

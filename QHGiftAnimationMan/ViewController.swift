@@ -29,19 +29,16 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func showMatrisAction(sender: AnyObject) {
-        let widthView: CGFloat = QHRandomLocation.getRandomNumer(12, to: 22)
-        let subView: UIView = UIView.init(frame: CGRectMake(0, 0, widthView, widthView))
-        subView.backgroundColor = UIColor.orangeColor()
-        subView.layer.cornerRadius = widthView/2
+    @IBAction func showMatrisAction(_ sender: Any) {
+        let widthView: CGFloat = QHRandomLocation.getRandomNumer(from: 12, to: 22)
         
-        let image = UIImage.init(named: QHRandomLocation.getRandomNumer(0, to: 1) == 0 ? "cao" : "hua")
-        let subImageView = UIImageView.init(frame: CGRectMake(0, 0, widthView, widthView))
+        let image = UIImage.init(named: QHRandomLocation.getRandomNumer(from: 0, to: 1) == 0 ? "cao" : "hua")
+        let subImageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: widthView, height: widthView))
         subImageView.image = image
         
-//        matrisManager!.addMatrisAnimation("xiaolian2", centerPoint: contentView.center, subView: subImageView)
+//        matrisManager!.addMatrisAnimation(name: "xiaolian2", centerPoint: contentView.center, subView: subImageView)
         
-        matrisManager!.addMatrisAnimationRandomLocation(QHRandomLocation.getRandomNumer(0, to: 1) == 0 ? "xiaolian" : "diao", subView: subImageView)
+        matrisManager!.addMatrisAnimationRandomLocation(name: QHRandomLocation.getRandomNumer(from: 0, to: 1) == 0 ? "xiaolian" : "diao", subView: subImageView)
     }
     
 }

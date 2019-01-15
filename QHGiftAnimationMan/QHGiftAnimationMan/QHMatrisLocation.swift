@@ -17,12 +17,17 @@ class QHMatrisLocation: NSObject {
     }
     
     func readMatrisFile(name: String, width: CGFloat, height: CGFloat, wSpace: CGFloat, hSpace: CGFloat) -> (Array<NSValue>, CGSize) {
+        let filePath = Bundle.main.path(forResource: name, ofType: nil)
+        return readMatrisFile(filePath: filePath!, width: width, height: height, wSpace: wSpace, hSpace: hSpace)
+    }
+    
+    func readMatrisFile(filePath: String, width: CGFloat, height: CGFloat, wSpace: CGFloat, hSpace: CGFloat) -> (Array<NSValue>, CGSize) {
         
         var matrixArray = [NSValue]()
         var matrixTempArray = [Any]()
 
-        let filePath = Bundle.main.path(forResource: name, ofType: nil)
-        let contentString = try! String.init(contentsOfFile: filePath!, encoding: String.Encoding.utf8)
+            
+        let contentString = try! String.init(contentsOfFile: filePath, encoding: String.Encoding.utf8)
         
         var length: CGFloat = 0
         

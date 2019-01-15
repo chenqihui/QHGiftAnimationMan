@@ -19,6 +19,7 @@
 		740132941C64DA7F007C22D1 /* xiaolian in Resources */ = {isa = PBXBuildFile; fileRef = 740132911C64DA7F007C22D1 /* xiaolian */; };
 		740132951C64DA7F007C22D1 /* xiaolian2 in Resources */ = {isa = PBXBuildFile; fileRef = 740132921C64DA7F007C22D1 /* xiaolian2 */; };
 		7432B53821ECA46700862465 /* ttt in Resources */ = {isa = PBXBuildFile; fileRef = 7432B53721ECA46700862465 /* ttt */; };
+		7432B53A21ED7F5400862465 /* QHImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7432B53921ED7F5400862465 /* QHImageUtil.swift */; };
 		745A78E91C66FEEF0073D18F /* QHUtilsMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745A78E81C66FEEF0073D18F /* QHUtilsMan.swift */; };
 		745A78EC1C67B81B0073D18F /* diao in Resources */ = {isa = PBXBuildFile; fileRef = 745A78EB1C67B81B0073D18F /* diao */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		740132911C64DA7F007C22D1 /* xiaolian */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xiaolian; sourceTree = "<group>"; };
 		740132921C64DA7F007C22D1 /* xiaolian2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xiaolian2; sourceTree = "<group>"; };
 		7432B53721ECA46700862465 /* ttt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ttt; sourceTree = "<group>"; };
+		7432B53921ED7F5400862465 /* QHImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QHImageUtil.swift; sourceTree = "<group>"; };
 		745A78E81C66FEEF0073D18F /* QHUtilsMan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QHUtilsMan.swift; sourceTree = "<group>"; };
 		745A78EB1C67B81B0073D18F /* diao */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = diao; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +93,7 @@
 				740132891C64D9DA007C22D1 /* QHMatrisLocation.swift */,
 				7401328B1C64D9DA007C22D1 /* QHRandomLocation.swift */,
 				745A78E81C66FEEF0073D18F /* QHUtilsMan.swift */,
+				7432B53921ED7F5400862465 /* QHImageUtil.swift */,
 			);
 			path = QHGiftAnimationMan;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				7401328E1C64D9DA007C22D1 /* QHRandomLocation.swift in Sources */,
 				740132791C64D9B9007C22D1 /* ViewController.swift in Sources */,
 				7401328C1C64D9DA007C22D1 /* QHMatrisLocation.swift in Sources */,
+				7432B53A21ED7F5400862465 /* QHImageUtil.swift in Sources */,
 				740132771C64D9B9007C22D1 /* AppDelegate.swift in Sources */,
 				745A78E91C66FEEF0073D18F /* QHUtilsMan.swift in Sources */,
 			);

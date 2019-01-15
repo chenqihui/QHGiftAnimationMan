@@ -64,11 +64,28 @@ class QHMatrisManager: NSObject, CAAnimationDelegate {
         else {
             if bAnimation == false {
                 bAnimation = true
-                currentMatrisArray = [name, NSValue.init(cgPoint: centerPoint), matrisTag, subView]
+                currentMatrisArray = [name, NSValue.init(cgPoint: centerPoint), matrisTag, subView, false]
                 self.createMatrisRandom()
             }
             else {
-                matrisListArray.append([name, NSValue(cgPoint: centerPoint), matrisTag, subView])
+                matrisListArray.append([name, NSValue(cgPoint: centerPoint), matrisTag, subView, false])
+            }
+        }
+    }
+    
+    func addMatrisAnimation(filePath: String, centerPoint: CGPoint, subView: UIView) {
+        matrisTag+=1
+        if bAsync == true {
+            self.createMatrisRandom(filePath: filePath, centerPoint, matrisTag, subView)
+        }
+        else {
+            if bAnimation == false {
+                bAnimation = true
+                currentMatrisArray = [filePath, NSValue.init(cgPoint: centerPoint), matrisTag, subView, true]
+                self.createMatrisRandom()
+            }
+            else {
+                matrisListArray.append([filePath, NSValue(cgPoint: centerPoint), matrisTag, subView, true])
             }
         }
     }
@@ -79,14 +96,25 @@ class QHMatrisManager: NSObject, CAAnimationDelegate {
         let centerPoint = (currentMatrisArray[1] as! NSValue).cgPointValue
         let matrisTag = currentMatrisArray[2] as! Int
         let subView = currentMatrisArray[3] as! UIView
-        
-        self.createMatrisRandom(name: name, centerPoint, matrisTag, subView)
+        let b = currentMatrisArray[4] as! Bool
+        if b == true {
+            self.createMatrisRandom(filePath: name, centerPoint, matrisTag, subView)
+        }
+        else {
+            self.createMatrisRandom(name: name, centerPoint, matrisTag, subView)
+        }
     }
     
     private func createMatrisRandom(name: String, _ centerPoint: CGPoint, _ matrisTag: Int, _ subView: UIView) {
+        if let filePath = Bundle.main.path(forResource: name, ofType: nil) {
+            createMatrisRandom(filePath: filePath, centerPoint, matrisTag, subView)
+        }
+    }
+    
+    private func createMatrisRandom(filePath: String, _ centerPoint: CGPoint, _ matrisTag: Int, _ subView: UIView) {
         
         let matrisLocation = QHMatrisLocation.init()
-        let (matrisArray, size) = matrisLocation.readMatrisFile(name: name, width: subView.frame.width, height: subView.frame.height, wSpace: wSpace, hSpace: hSpace)
+        let (matrisArray, size) = matrisLocation.readMatrisFile(filePath: filePath, width: subView.frame.width, height: subView.frame.height, wSpace: wSpace, hSpace: hSpace)
         let x = centerPoint.x - size.width/2
         let y = centerPoint.y - size.height/2
         
